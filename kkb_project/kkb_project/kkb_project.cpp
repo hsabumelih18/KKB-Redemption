@@ -1,9 +1,11 @@
-
 #include <iostream>
 #include <vector>
 #include <stdio.h>      /* printf, NULL */
 #include <stdlib.h>     /* srand, rand */
-#include <time.h>       /* time */
+#include <time.h> 
+#include <Windows.h>
+#include <conio.h>
+
 using namespace std;
 //check whether a number is between 0 and 7
 int checkBetween(int number)
@@ -55,6 +57,7 @@ vector<int> generateCombination()
 }
 
 
+
 void centerstring(string s)
 {
     CONSOLE_SCREEN_BUFFER_INFO csbiInfo;
@@ -70,46 +73,55 @@ void centerstring(string s)
 }
 
 
-
-
+void printStrings(string s) {
+    string str;
+    int indexdel = 0;
+    while (s.find(",") != string::npos)
+    {
+        indexdel = s.find(",");
+        str = s.substr(0, indexdel);
+        s = s.substr(indexdel + 1, s.size() - indexdel);
+        centerstring(str);
+        cout << endl;
+    }
+}
+void resize() {
+    if (_kbhit()) {
+        char ch = _getch();
+        switch (ch)
+        {
+        case 32:
+            system("cls");
+            break;
+        }
+    }
+}
+bool Menu() {
+    string greeting = "+--------------------------+,|   Welcome to bletchley   |,|                          |,|   +------------------+   |,|   | Choose an Option |   |,|   +------------------+   |,|                          |,+--------------------------+,|                          |,|   1.Play vs AI           |,|                          |,|   2.Play vs Player       |,|                          |,+--------------------------+,";
+    printStrings(greeting);
+    resize();
+    int a;
+    cin >> a;
+    printStrings(greeting);
+    return true;
+}
 
 int main()
 {
     
-    //vector<int> arr = askForCombination();
+    /*vector<int> arr = askForCombination();
     vector<int> arr = generateCombination();
     for (size_t i = 0; i < arr.size(); i++)
     {
         cout << arr[i] << " ";
-    }
-    
-	string greeting = R"(
- 
- 
-         +--------------------------+
-         |   Welcome to bletchley   |
-         |                          |
-         |   +------------------+   |
-         |   | Choose an Option |   |
-         |   +------------------+   |                  
-         |                          |
-         +--------------------------+
-         |                          |
-         |   1.Play vs AI           |
-         |                          |
-         |   2.Play vs Player       |
-         |                          |
-         +--------------------------+  
- 
- 
- 
-)";
+    }*/
+    /*
     string mitko = "asd";
     centerstring(mitko);
     cout << endl;
     int a;
     cin >> a;
     centerstring(mitko);
+    */
    
-    
 }
