@@ -11,7 +11,7 @@ Direct message on Discord.
 Direct message in the Group Chat.
 No violation is too small to let me know about. I want to keep this community healthy and safe for all members and that means that we crack down on anti-inclusivity as soon as it happens.
 
-##Absence
+## Absence
 Giving the fact that we are a 6 member team, we have different schedules. Therefore we try to organize our meetings in a way that they are accessible by all of us.
 Giving the fact that we have a project for a short period of time to work, it is unaceptable to skip meetings.
 "1 - 3" absences: Not punishable.
@@ -25,7 +25,7 @@ Violating the Culture of Error and Growth Mindset agreements after being asked t
 Banable offenses
 Sometimes a timeout isn't enough and a ban is required. A ban is where a specific account cannot contribute to conversations, or pull requests. We are banning by account as opposed to IP addresses as IP addresses can be spoofed, also accounts are required for participating in the community. The following actions can cause a ban.
 
-##Violating the timeout offenses multiple times
+## Violating the timeout offenses multiple times
 Offensive comments related to gender identity and expression, sexual orientation, race, ethnicity, language, neuro-type, size, ability, class, religion, culture, subculture, political opinion, age, skill level, occupation, or background
 Threats of violence
 Deliberate intimidation
@@ -38,7 +38,7 @@ This is community focused around learning and constantly improving ourselves. It
 
 Only through risking failure can we learn how not to fail.
 
-##Growth mindset
+## Growth mindset
 A growth mindset is one where we understand that people can change through hard work and not giving up. In this community we encourage everyone to adopt a growth mindset where we can adapt to whatever challenges we are facing so that we can not only survive them, but thrive in the face of them.
 
 Only through change can we adapt to handle what life is throwing at us.
