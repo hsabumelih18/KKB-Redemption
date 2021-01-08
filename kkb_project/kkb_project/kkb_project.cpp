@@ -12,7 +12,7 @@ int checkBetween(int number)
 {
     while (number < 0 || number>7)
     {
-        cout << "Input a number between 0 and 7" << endl;
+        cout << "Input a number between 0 and 7!" << endl;
         cin >> number;
     }
     return number;
@@ -57,7 +57,6 @@ vector<int> generateCombination()
 }
 
 
-
 void centerstring(string s)
 {
     CONSOLE_SCREEN_BUFFER_INFO csbiInfo;
@@ -73,7 +72,8 @@ void centerstring(string s)
 }
 
 
-void printStrings(string s) {
+void printStrings(string s)
+{
     string str;
     int indexdel = 0;
     while (s.find(",") != string::npos)
@@ -85,18 +85,23 @@ void printStrings(string s) {
         cout << endl;
     }
 }
-void resize() {
-    if (_kbhit()) {
+
+void resize()
+{
+    if (_kbhit())
+    {
         char ch = _getch();
         switch (ch)
         {
-        case 32:
+        case 32: //int(' ')
             system("cls");
             break;
         }
     }
 }
-bool Menu() {
+
+bool Menu()
+{
     string greeting = "+--------------------------+,|   Welcome to bletchley   |,|                          |,|   +------------------+   |,|   | Choose an Option |   |,|   +------------------+   |,|                          |,+--------------------------+,|                          |,|   1.Play vs AI           |,|                          |,|   2.Play vs Player       |,|                          |,+--------------------------+,";
     printStrings(greeting);
     resize();
@@ -106,22 +111,61 @@ bool Menu() {
     return true;
 }
 
+vector<int> makeGuess(vector<int> combination)
+{
+    vector<int> guess;
+    int i, number;
+    cout << "Try to guess the coordinates of the battleship. ";
+    cout << "Enter 4 numbers between 0 and 7" << endl;
+    for (i = 0; i < 4; i++)
+    {
+        cin >> number;
+        number = checkBetween(number);
+        guess.push_back(number);
+    }
+
+    return guess;
+}
+
+void showCorrectGuess(int guessedCount, int guessedPositionCount)
+{
+    cout << "You guessed " << guessedCount << " numbers correct" << endl;
+    cout << "You guessed " << guessedPositionCount;
+    cout << " numbers and positions correct" << endl;
+}
+
+void checkGuess(vector<int> guess, vector<int> combination)
+{
+    int guessedPositionCount=0, guessedCount=0;
+    for (size_t i = 0; i < combination.size(); i++)
+    {
+        if (guess[i] == combination[i]) guessedPositionCount++;
+
+        for (size_t j = 0; j < combination.size(); j++)
+        {
+            if (guess[j] == combination[i])
+            {
+                guessedCount++;
+                break;
+            }
+        }
+    }
+    showCorrectGuess(guessedCount, guessedPositionCount);
+
+}
+
 int main()
 {
-    
-    /*vector<int> arr = askForCombination();
-    vector<int> arr = generateCombination();
-    for (size_t i = 0; i < arr.size(); i++)
+    vector<int> guess;
+    //vector<int> arr = askForCombination();
+    vector<int> arr2 = generateCombination();
+    for (size_t i = 0; i < arr2.size(); i++)
     {
-        cout << arr[i] << " ";
-    }*/
-    /*
-    string mitko = "asd";
-    centerstring(mitko);
+        cout << arr2[i] << " ";
+    }
     cout << endl;
-    int a;
-    cin >> a;
-    centerstring(mitko);
-    */
+    guess=makeGuess(arr2);
+    checkGuess(guess,arr2);
+    
    
 }
