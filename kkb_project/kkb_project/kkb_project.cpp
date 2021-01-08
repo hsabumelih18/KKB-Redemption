@@ -42,17 +42,38 @@ int randomInt(int minimum, int maximum)
     return rand() % (maximum - minimum + 1) + minimum;
 }
 
+int generateCoord(bool* used)
+{
+    int num;
+    while (1)
+    {
+        num = randomInt(0, 7);
+        if (used[num] == false)
+        {
+            used[num] = true;
+            return num;
+        }
+    }
+}
+
 //generates 4 random numbers between 0 and 7
-vector<int> generateCombination()
+vector<int> generateCombination(bool repetitions)
 {
     srand(time(NULL)); //resets the seed so that everytime the numbers are different
     vector<int> coords;
-
+    int num;
+    bool used[7] = { 0 };
     for (int i = 0; i < 4; i++)
     {
-        coords.push_back(randomInt(0, 7));
+        if (repetitions == false)
+        {
+            coords.push_back(generateCoord(used));
+        }
+        else
+        {
+            coords.push_back(randomInt(0, 7));
+        }
     }
-
     return coords;
 }
 
@@ -134,6 +155,11 @@ void showCorrectGuess(int guessedCount, int guessedPositionCount)
     cout << " numbers and positions correct" << endl;
 }
 
+void checkWinner(int guessedCount)
+{
+    cout << "You won, poggers" << endl;
+}
+
 void checkGuess(vector<int> guess, vector<int> combination)
 {
     int guessedPositionCount=0, guessedCount=0;
@@ -156,16 +182,5 @@ void checkGuess(vector<int> guess, vector<int> combination)
 
 int main()
 {
-    vector<int> guess;
-    //vector<int> arr = askForCombination();
-    vector<int> arr2 = generateCombination();
-    for (size_t i = 0; i < arr2.size(); i++)
-    {
-        cout << arr2[i] << " ";
-    }
-    cout << endl;
-    guess=makeGuess(arr2);
-    checkGuess(guess,arr2);
     
-   
 }
