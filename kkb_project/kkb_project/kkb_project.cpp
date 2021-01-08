@@ -7,6 +7,9 @@
 #include <conio.h>
 
 using namespace std;
+
+string greeting = "+--------------------------+,|   Welcome to bletchley   |,|                          |,|   +------------------+   |,|   | Choose an Option |   |,|   +------------------+   |,|                          |,+--------------------------+,|                          |,|   1.Play vs AI           |,|                          |,|   2.Play vs Player       |,|                          |,+--------------------------+,";
+
 //check whether a number is between 0 and 7
 int checkBetween(int number)
 {
@@ -86,42 +89,31 @@ void printStrings(string s) {
     }
 }
 void resize() {
-    if (_kbhit()) {
-        char ch = _getch();
-        switch (ch)
-        {
-        case 32:
-            system("cls");
-            break;
+    while (1) {
+        if (_kbhit()) {
+            char ch = _getch();
+            switch (ch)
+            {
+            case 32:
+                system("cls");
+                return;
+                break;
+            }
         }
     }
 }
 bool Menu() {
-    string greeting = "+--------------------------+,|   Welcome to bletchley   |,|                          |,|   +------------------+   |,|   | Choose an Option |   |,|   +------------------+   |,|                          |,+--------------------------+,|                          |,|   1.Play vs AI           |,|                          |,|   2.Play vs Player       |,|                          |,+--------------------------+,";
     printStrings(greeting);
-    resize();
     int a;
     cin >> a;
-    printStrings(greeting);
     return true;
 }
 
 int main()
 {
-    
-    /*vector<int> arr = askForCombination();
-    vector<int> arr = generateCombination();
-    for (size_t i = 0; i < arr.size(); i++)
-    {
-        cout << arr[i] << " ";
-    }*/
-    /*
-    string mitko = "asd";
-    centerstring(mitko);
-    cout << endl;
-    int a;
-    cin >> a;
-    centerstring(mitko);
-    */
-   
+    string resizeInf = "You can resize the window by pressing esc.";
+    cout << resizeInf;
+    resize();
+    cout << endl << endl;
+    while(Menu());
 }
