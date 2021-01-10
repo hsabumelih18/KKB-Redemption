@@ -91,25 +91,20 @@ void printStrings(string s)
 
 void resize()
 {
-    if (_kbhit())
+    while(1)
     {
-        char ch = _getch();
-        switch (ch)
+        if (_kbhit())
         {
-        case 32: //int(' ')
-            system("cls");
-            break;
+            char ch = _getch();
+            switch (ch)
+            {
+            case 32: //int(' ')
+                system("cls");
+                return;
+                break;
+            }
         }
     }
-}
-
-bool Menu()
-{
-    string greeting = "+--------------------------+,|   Welcome to bletchley   |,|                          |,|   +------------------+   |,|   | Choose an Option |   |,|   +------------------+   |,|                          |,+--------------------------+,|                          |,|   1.Play vs AI           |,|                          |,|   2.Play vs Player       |,|                          |,+--------------------------+,";
-    printStrings(greeting);
-    int a;
-    cin >> a;
-    return true;
 }
 
 vector<int> makeGuess(vector<int> combination)
@@ -135,7 +130,7 @@ void showCorrectGuess(int guessedCount, int guessedPositionCount)
     cout << " numbers and positions correct" << endl;
 }
 
-void checkGuess(vector<int> guess, vector<int> combination)
+bool checkGuess(vector<int> guess, vector<int> combination)
 {
     int guessedPositionCount=0, guessedCount=0;
     for (size_t i = 0; i < combination.size(); i++)
@@ -152,14 +147,63 @@ void checkGuess(vector<int> guess, vector<int> combination)
         }
     }
     showCorrectGuess(guessedCount, guessedPositionCount);
+    if (guessedPositionCount == 4)
+    {
+        return true;
+    }
+    return false;
+    
 
 }
+    
+bool mainLoop(int option)
+{
+    vector<int> combination;
+    if (option == 2) {
+         combination = askForCombination();
+    }
+    else {
+         combination = generateCombination();
+    }
+    for (int i = 0; i < 13; i++)
+    {
+        vector<int> guess;
+        for (size_t i = 0; i < combination.size(); i++)
+        {
+            cout << combination[i] << " ";
+        }
+        cout << endl;
+        guess = makeGuess(combination);
+        if (checkGuess(guess, combination))
+        {
+            return true;
+        }       
+    }
+    return false;
+}
 
-int main()
+bool Menu()
 {
     string resizeInf = "You can resize the window by pressing esc.";
     cout << resizeInf;
     resize();
     cout << endl << endl;
+    string greeting = "+--------------------------+,|   Welcome to bletchley   |,|                          |,|   +------------------+   |,|   | Choose an Option |   |,|   +------------------+   |,|                          |,+--------------------------+,|                          |,|   1.Play vs AI           |,|                          |,|   2.Play vs Player       |,|                          |,+--------------------------+,";
+    printStrings(greeting);
+    int option;
+    cin >> option;
+    if (mainLoop(option)) 
+    {
+        cout << "You won, poggers!" << endl;
+    }
+    else 
+    {
+        cout << "You lost, poggers!" << endl;
+    }
+    return true;
+}
+
+int main()
+{
     while(Menu());
 }
