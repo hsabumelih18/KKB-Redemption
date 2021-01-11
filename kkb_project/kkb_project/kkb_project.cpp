@@ -177,34 +177,40 @@ bool checkGuess(vector<int> guess, vector<int> combination)
 
 }
     
-bool mainLoop(int option)
+bool mainLoop(int option, int repetitions)
 {
     vector<int> combination;
+    bool reps;
+    if (repetitions == 1) 
+    {
+        reps = false;
+    }
+    if (repetitions == 2)
+    {
+        reps = true;
+    }
     if (option == 2) {
          combination = askForCombination();
     }
     else {
-         combination = generateCombination();
+         combination = generateCombination(reps);
     }
     for (int i = 0; i < 13; i++)
     {
         vector<int> guess;
-        for (size_t i = 0; i < combination.size(); i++)
-        {
-            cout << combination[i] << " ";
-        }
         cout << endl;
         guess = makeGuess(combination);
         if (checkGuess(guess, combination))
         {
             return true;
-        }       
+        }     
     }
     return false;
 }
 
 bool Menu()
 {
+    string difString = "+-----------------------+,|                       |,| Select difficulty     |,|                       |,+-----------------------+,|                       |,| 1.Without repetitions |,|                       |,| 2.With repetitons     |,|                       |,+-----------------------+,";
     string resizeInf = "You can resize the window by pressing esc.";
     cout << resizeInf;
     resize();
@@ -213,7 +219,12 @@ bool Menu()
     printStrings(greeting);
     int option;
     cin >> option;
-    if (mainLoop(option)) 
+    system("CLS");
+    printStrings(difString);
+    int dif;
+    cin >> dif;
+    system("CLS");
+    if (mainLoop(option,dif)) 
     {
         cout << "You won, poggers!" << endl;
     }
