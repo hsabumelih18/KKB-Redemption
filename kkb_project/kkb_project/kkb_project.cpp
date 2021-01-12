@@ -29,7 +29,7 @@ int checkBetween(int number)
     while (number < 0 || number>7)
     {
         cout << "Input a number between 0 and 7!" << endl;
-        cin >> number;
+        return -1;
     }
     return number;
 }
@@ -141,17 +141,28 @@ void resize()
     }
 }
 
-vector<int> makeGuess(vector<int> combination)
+vector<int> makeGuess()
 {
     vector<int> guess;
-    int i, number;
+    int number;
     cout << "Try to guess the coordinates of the battleship. ";
     cout << "Enter 4 numbers between 0 and 7" << endl;
-    for (i = 0; i < 4; i++)
+    
+    for (int i = 0; i < 4; i++)
     {
-        cin >> number;
-        number = checkBetween(number);
+        number = Readint();
         guess.push_back(number);
+    }
+    for (int i = 0; i < 4; i++) 
+    {
+        number = checkBetween(guess[i]);
+        if (number != -1)
+        {
+            guess[i] = number;
+        }
+        else {
+            return makeGuess();
+        }
     }
 
     return guess;
@@ -212,7 +223,7 @@ bool mainLoop(int option, int repetitions)
     {
         vector<int> guess;
         cout << endl;
-        guess = makeGuess(combination);
+        guess = makeGuess();
         if (checkGuess(guess, combination))
         {
             return true;
@@ -257,7 +268,7 @@ bool Menu()
     }
     else 
     {
-        cout << "You lost, poggers!" << endl;
+        cout << "You lost, not poggers!" << endl;
     }
     return true;
 }
