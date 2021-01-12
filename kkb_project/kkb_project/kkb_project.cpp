@@ -226,7 +226,7 @@ bool Menu()
     string greeting = "+--------------------------+,|   Welcome to bletchley   |,|                          |,|   +------------------+   |,|   | Choose an Option |   |,|   +------------------+   |,|                          |,+--------------------------+,|                          |,|   1.Play vs AI           |,|                          |,|   2.Play vs Player       |,|                          |,+--------------------------+,";
     int option, dif;
     string difString = "+-----------------------+,|                       |,| Select difficulty     |,|                       |,+-----------------------+,|                       |,| 1.Without repetitions |,|                       |,| 2.With repetitons     |,|                       |,+-----------------------+,";
-    string resizeInf = "You can resize the window by pressing esc.";
+    string resizeInf = "Press space to resize the window.";
     cout << resizeInf;
     resize();
     cout << endl << endl;    printStrings(greeting);
@@ -235,7 +235,7 @@ bool Menu()
     {
         while(option != 1 && option != 2)
         {
-            cout << "Choose one from the given options!";
+            cout << "Choose one from the given options!" << endl;
             option = Readint();
         }
     }
@@ -246,7 +246,7 @@ bool Menu()
     {
         while (dif != 1 && dif != 2)
         {
-            cout << "Choose one from the given options!";
+            cout << "Choose one from the given options!" << endl;
             dif = Readint();
         }
     }
