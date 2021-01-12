@@ -10,6 +10,19 @@ using namespace std;
 
 string greeting = "+--------------------------+,|   Welcome to bletchley   |,|                          |,|   +------------------+   |,|   | Choose an Option |   |,|   +------------------+   |,|                          |,+--------------------------+,|                          |,|   1.Play vs AI           |,|                          |,|   2.Play vs Player       |,|                          |,+--------------------------+,";
 
+int Readint()
+{
+    int a;
+
+    while (!(cin >> a))
+    {
+        cin.clear();
+        cin.ignore(INT_MAX, '\n');
+        cout << "Incorrect value!" << endl;
+    }
+
+    return a;
+}
 //check whether a number is between 0 and 7
 int checkBetween(int number)
 {
@@ -210,19 +223,33 @@ bool mainLoop(int option, int repetitions)
 
 bool Menu()
 {
+    string greeting = "+--------------------------+,|   Welcome to bletchley   |,|                          |,|   +------------------+   |,|   | Choose an Option |   |,|   +------------------+   |,|                          |,+--------------------------+,|                          |,|   1.Play vs AI           |,|                          |,|   2.Play vs Player       |,|                          |,+--------------------------+,";
+    int option, dif;
     string difString = "+-----------------------+,|                       |,| Select difficulty     |,|                       |,+-----------------------+,|                       |,| 1.Without repetitions |,|                       |,| 2.With repetitons     |,|                       |,+-----------------------+,";
     string resizeInf = "You can resize the window by pressing esc.";
     cout << resizeInf;
     resize();
-    cout << endl << endl;
-    string greeting = "+--------------------------+,|   Welcome to bletchley   |,|                          |,|   +------------------+   |,|   | Choose an Option |   |,|   +------------------+   |,|                          |,+--------------------------+,|                          |,|   1.Play vs AI           |,|                          |,|   2.Play vs Player       |,|                          |,+--------------------------+,";
-    printStrings(greeting);
-    int option;
-    cin >> option;
+    cout << endl << endl;    printStrings(greeting);
+    option = Readint();
+    if (option != 1 && option != 2)
+    {
+        while(option != 1 && option != 2)
+        {
+            cout << "Choose one from the given options!";
+            option = Readint();
+        }
+    }
     system("CLS");
     printStrings(difString);
-    int dif;
-    cin >> dif;
+    dif = Readint();
+    if (dif != 1 && dif != 2)
+    {
+        while (dif != 1 && dif != 2)
+        {
+            cout << "Choose one from the given options!";
+            dif = Readint();
+        }
+    }
     system("CLS");
     if (mainLoop(option,dif)) 
     {
