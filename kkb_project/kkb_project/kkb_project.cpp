@@ -26,9 +26,9 @@ int readInt()
 //check whether a number is between 0 and 7
 int checkBetween(int number)
 {
-    while (number < 0 || number>7)
+    if (number < 0 || number>7)
     {
-        cout << "Input a number between 0 and 7!" << endl;
+        cout << "Input a numbers between 0 and 7!" << endl;
         return -1;
     }
     return number;
@@ -41,13 +41,24 @@ vector<int> askForCombination()
     vector<int> coords;
     int number;
     cout << "Enter 4 numbers between 0 and 7";
-    cout << "(The coordinates of the ship)"<<endl;
+    cout << "(The coordinates of the ship)"<<endl << endl;
     for (int i = 0; i < 4; i++)
     {
-        cin >> number;
-        number = checkBetween(number);
+        number = readInt();
         coords.push_back(number);
     }
+    for (int i = 0; i < 4; i++)
+    {
+        number = checkBetween(coords[i]);
+        if (number != -1)
+        {
+            coords[i] = number;
+        }
+        else {
+            return askForCombination();
+        }
+    }
+    system("CLS");
     return coords;
 }
 
@@ -146,7 +157,7 @@ vector<int> makeGuess()
     vector<int> guess;
     int number;
     cout << "Try to guess the coordinates of the battleship. ";
-    cout << "Enter 4 numbers between 0 and 7" << endl;
+    cout << "Enter 4 numbers between 0 and 7" << endl << endl;
     
     for (int i = 0; i < 4; i++)
     {
@@ -172,7 +183,7 @@ void showCorrectGuess(int guessedCount, int guessedPositionCount)
 {
     cout << "You guessed " << guessedCount << " numbers correct" << endl;
     cout << "You guessed " << guessedPositionCount;
-    cout << " numbers and positions correct" << endl;
+    cout << " numbers and positions correct" << endl << endl;
 }
 
 bool checkGuess(vector<int> guess, vector<int> combination)
@@ -222,7 +233,6 @@ bool mainLoop(int option, int repetitions)
     for (int i = 0; i < 13; i++)
     {
         vector<int> guess;
-        cout << endl;
         guess = makeGuess();
         if (checkGuess(guess, combination))
         {
@@ -235,7 +245,7 @@ bool mainLoop(int option, int repetitions)
 bool Menu()
 {
     string greeting = "+--------------------------+,|   Welcome to bletchley   |,|                          |,|   +------------------+   |,|   | Choose an Option |   |,|   +------------------+   |,|                          |,+--------------------------+,|                          |,|   1.Play vs AI           |,|                          |,|   2.Play vs Player       |,|                          |,+--------------------------+,";
-    int option, dif;
+    int option, dif=0;
     string difString = "+-----------------------+,|                       |,| Select difficulty     |,|                       |,+-----------------------+,|                       |,| 1.Without repetitions |,|                       |,| 2.With repetitons     |,|                       |,+-----------------------+,";
     string resizeInf = "Press space to resize the window.";
     cout << resizeInf;
@@ -251,25 +261,29 @@ bool Menu()
         }
     }
     system("CLS");
-    printStrings(difString);
-    dif = readInt();
-    if (dif != 1 && dif != 2)
+    if (option == 1)
     {
-        while (dif != 1 && dif != 2)
+        printStrings(difString);
+        dif = readInt();
+        if (dif != 1 && dif != 2)
         {
-            cout << "Choose one from the given options!" << endl;
-            dif = readInt();
+            while (dif != 1 && dif != 2)
+            {
+                cout << "Choose one from the given options!" << endl;
+                dif = readInt();
+            }
         }
+        system("CLS");
     }
-    system("CLS");
-    if (mainLoop(option,dif)) 
-    {
-        cout << "You won, poggers!" << endl;
-    }
-    else 
-    {
-        cout << "You lost, not poggers!" << endl;
-    }
+        if (mainLoop(option, dif))
+        {
+            cout << "You won, poggers!" << endl;
+        }
+        else
+        {
+            cout << "You lost, not poggers!" << endl;
+        }
+    
     return true;
 }
 
