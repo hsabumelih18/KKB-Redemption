@@ -21,9 +21,9 @@ Giving the fact that we have a project for a short period of time to work, it is
 ## Posting a message about a topic after being asked repeatedly to not post said topic
 Advertising in chat without permission
 Using harrassing speach towards any people (making fun of technology is ok, making fun of people will result in a timeout)
-Violating the Culture of Error and Growth Mindset agreements after being asked to stop
-Banable offenses
-Sometimes a timeout isn't enough and a ban is required. A ban is where a specific account cannot contribute to conversations, or pull requests. We are banning by account as opposed to IP addresses as IP addresses can be spoofed, also accounts are required for participating in the community. The following actions can cause a ban.
+Violating the Culture of Error and Growth Mindset agreements after being asked to stop.
+
+
 
 ## Violating the timeout offenses multiple times
 Offensive comments related to gender identity and expression, sexual orientation, race, ethnicity, language, neuro-type, size, ability, class, religion, culture, subculture, political opinion, age, skill level, occupation, or background
