@@ -4,9 +4,9 @@
 The short of the code of conduct is to be awesome to each other. We are all here to learn, improve, and help each other not only survive, but thrive while improving ourselves.
 
 ## Need to report a code of conduct violation?
-You can contact Brooks directly and privately through the following methods to open a dialog about what happened / is happening and how we can solve it.
+You can contact "hsabumelih18@codingburgas.bg" directly and privately through the following methods to open a dialog about what happened / is happening and how we can solve it.
 
-Direct message on Teams
+Direct message on Teams.
 Direct message on Discord.
 Direct message in the Group Chat.
 No violation is too small to let me know about. I want to keep this community healthy and safe for all members and that means that we crack down on anti-inclusivity as soon as it happens.
