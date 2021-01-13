@@ -10,7 +10,7 @@ using namespace std;
 
 string greeting = "+--------------------------+,|   Welcome to bletchley   |,|                          |,|   +------------------+   |,|   | Choose an Option |   |,|   +------------------+   |,|                          |,+--------------------------+,|                          |,|   1.Play vs AI           |,|                          |,|   2.Play vs Player       |,|                          |,+--------------------------+,";
 
-int Readint()
+int readInt()
 {
     int a;
 
@@ -94,7 +94,7 @@ vector<int> generateCombination(bool repetitions)
 }
 
 
-void centerstring(string s)
+void centerString(string s)
 {
     CONSOLE_SCREEN_BUFFER_INFO csbiInfo;
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbiInfo);
@@ -118,7 +118,7 @@ void printStrings(string s)
         indexdel = s.find(",");
         str = s.substr(0, indexdel);
         s = s.substr(indexdel + 1, s.size() - indexdel);
-        centerstring(str);
+        centerString(str);
         cout << endl;
     }
 }
@@ -150,7 +150,7 @@ vector<int> makeGuess()
     
     for (int i = 0; i < 4; i++)
     {
-        number = Readint();
+        number = readInt();
         guess.push_back(number);
     }
     for (int i = 0; i < 4; i++) 
@@ -241,24 +241,24 @@ bool Menu()
     cout << resizeInf;
     resize();
     cout << endl << endl;    printStrings(greeting);
-    option = Readint();
+    option = readInt();
     if (option != 1 && option != 2)
     {
         while(option != 1 && option != 2)
         {
             cout << "Choose one from the given options!" << endl;
-            option = Readint();
+            option = readInt();
         }
     }
     system("CLS");
     printStrings(difString);
-    dif = Readint();
+    dif = readInt();
     if (dif != 1 && dif != 2)
     {
         while (dif != 1 && dif != 2)
         {
             cout << "Choose one from the given options!" << endl;
-            dif = Readint();
+            dif = readInt();
         }
     }
     system("CLS");
